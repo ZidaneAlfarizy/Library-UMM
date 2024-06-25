@@ -33,7 +33,7 @@ public class LibrarySystem extends Application {
         primaryStage.setTitle("UMM Library");
 
         // Load the logo image
-        Image logoImage = new Image("file:C:\\Users\\alfar\\OneDrive\\Gambar\\BAHAN PAMERAN\\logo umm monocrom putim (1).png");
+        Image logoImage = new Image("file:image/logo umm monocrom putim (1).png");
         ImageView logoImageView = new ImageView(logoImage);
         logoImageView.setFitHeight(150); // set the desired height
         logoImageView.setPreserveRatio(true); // maintain the aspect ratio
@@ -106,7 +106,7 @@ public class LibrarySystem extends Application {
             if (usernameField.getText().equals(Admin.adminusername) && passwordField.getText().equals(Admin.adminpassword)) {
                 adminObj.menu();
                 primaryStage.close();
-            } else if (usernameField.getText().length() == 15 && passwordField.getText().length() < 15) {
+            } else if (usernameField.getText().length() > 1 && passwordField.getText().length() < 15) {
                 try {
                     if (studentObj.isStudents(usernameField)) {
                         errorLoginMessage.setVisible(false);

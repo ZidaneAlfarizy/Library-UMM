@@ -151,11 +151,13 @@ public class User {
         Button historyBookButton = new Button("History Book");
         Button storyBookButton = new Button("Story Book");
         Button textBookButton = new Button("Text Book");
+        Button backButton = new Button("Kembali"); // Button kembali
 
         //Button styles
         historyBookButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
         storyBookButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
         textBookButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
+        backButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;"); // Style button kembali
 
         //Grid layout
         GridPane grid = new GridPane();
@@ -167,6 +169,8 @@ public class User {
         grid.add(historyBookButton, 2, 0);
         grid.add(storyBookButton, 2, 1);
         grid.add(textBookButton, 2, 2);
+        grid.add(backButton, 0, 3); // Add button kembali to the grid
+
 
         grid.setVgap(10);
         grid.setHgap(5);
@@ -188,6 +192,12 @@ public class User {
 
         textBookButton.setOnAction(event -> {
             addBook(textBookObj, "UMM Library - Add Text Book", "Text Book");
+            inputBookStage.close();
+        });
+
+        backButton.setOnAction(event -> {
+            Admin adminObj = new Admin();
+            adminObj.menu();
             inputBookStage.close();
         });
     }

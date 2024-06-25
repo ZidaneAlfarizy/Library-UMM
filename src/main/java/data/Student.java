@@ -19,13 +19,14 @@ public class Student extends User implements iMenu {
 
     //Konstruktor untuk arraylist arr_userStudent.
     public static class UserStudent {
-        String nama, nim, fakultas, prodi;
+        String nama, nim, fakultas, prodi, email;
 
-        public UserStudent(String nama, String nim, String fakultas, String prodi) {
+        public UserStudent(String nama, String nim, String fakultas, String prodi, String email) {
             this.nama = nama;
             this.nim = nim;
             this.fakultas = fakultas;
             this.prodi = prodi;
+            this.email = email;
         }
     }
 

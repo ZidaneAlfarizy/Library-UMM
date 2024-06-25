@@ -41,7 +41,6 @@ public class Admin extends User implements iMenu {
 
         //Button
         Button addStudentButton     = new Button("Tambah Mahasiswa");
-        Button addTeacherButton     = new Button("Tambah Dosen");
         Button displayStudentButton = new Button("Daftar Mahasiswa");
         Button addBookButton        = new Button("Tambah Buku");
         Button logoutButton         = new Button("Logout");
@@ -108,6 +107,7 @@ public class Admin extends User implements iMenu {
         Label nimLabel      = new Label("NIM");
         Label fakultasLabel = new Label("Fakultas");
         Label jurusanLabel  = new Label("Jurusan");
+        Label emailLabel    = new Label("Email");
 
         //Notification Label
         Label sumbitFailed = new Label("NIM harus 15 digit!");
@@ -118,6 +118,7 @@ public class Admin extends User implements iMenu {
         TextField nimField      = new TextField();
         TextField fakultasField = new TextField();
         TextField jurusanField  = new TextField();
+        TextField emailField    = new TextField();
 
         //Font Style
         sceneTitle.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
@@ -125,6 +126,7 @@ public class Admin extends User implements iMenu {
         nimLabel.setFont(Font.font("Calibri Body", FontWeight.NORMAL, 15));
         fakultasLabel.setFont(Font.font("Calibri Body", FontWeight.NORMAL, 15));
         jurusanLabel.setFont(Font.font("Calibri Body", FontWeight.NORMAL, 15));
+        emailLabel.setFont(Font.font("Calibri Body", FontWeight.NORMAL, 15));
 
         //Font Color
         sceneTitle.setStyle("-fx-text-fill: white;");
@@ -132,11 +134,14 @@ public class Admin extends User implements iMenu {
         nimLabel.setStyle("-fx-text-fill: white;");
         fakultasLabel.setStyle("-fx-text-fill: white;");
         jurusanLabel.setStyle("-fx-text-fill: white;");
+        emailLabel.setStyle("-fx-text-fill: white;");
         sumbitFailed.setStyle("-fx-text-fill: #FF1E1E;");
 
         //Button
         Button submitButton = new Button("Submit");
+        Button backButton = new Button("Kembali");
         submitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
+        backButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
 
         //Grid Layout
         GridPane grid = new GridPane();
@@ -148,14 +153,17 @@ public class Admin extends User implements iMenu {
         grid.add(nimLabel, 0,2);
         grid.add(fakultasLabel, 0,3);
         grid.add(jurusanLabel, 0,4);
+        grid.add(emailLabel, 0,5);
 
         grid.add(nameField, 1,1);
         grid.add(nimField, 1,2);
         grid.add(fakultasField, 1,3);
         grid.add(jurusanField, 1,4);
+        grid.add(emailField, 1,5);
 
-        grid.add(submitButton,1,5);
-        grid.add(sumbitFailed, 0,5);
+        grid.add(submitButton, 1,6);
+        grid.add(backButton, 0,7);
+        grid.add(sumbitFailed, 1,7);
 
         grid.setVgap(10);
         grid.setHgap(5);
@@ -169,7 +177,7 @@ public class Admin extends User implements iMenu {
             if (nimField.getText().length() == 15) {
                 Admin adminObj = new Admin();
 
-                Student.arr_userStudent.add(new Student.UserStudent(nameField.getText(), nimField.getText(), fakultasField.getText(), jurusanField.getText()));
+                Student.arr_userStudent.add(new Student.UserStudent(nameField.getText(), nimField.getText(), fakultasField.getText(), jurusanField.getText(), emailField.getText()));
                 adminObj.menu();
                 addStudentStage.close();
 
@@ -178,6 +186,10 @@ public class Admin extends User implements iMenu {
             }
         });
 
+        backButton.setOnAction(event -> {
+            menu(); // Kembali ke menu admin
+            addStudentStage.close();
+        });
     }
 
     public void displaystudent() {
@@ -203,6 +215,7 @@ public class Admin extends User implements iMenu {
                     "NIM      : " + i.nim + "\n" +
                     "Fakultas : " + i.fakultas + "\n" +
                     "Prodi    : " + i.prodi + "\n" +
+                    "Email    : " + i.email + "\n" +
                     "===========================";
             listView.getItems().add(studentInfo);
         }
